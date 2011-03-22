@@ -1,14 +1,18 @@
 $LOAD_PATH << "." unless $LOAD_PATH.include?(".")
 
 require "rubygems"
-require "bundler"
+require "bundler/setup"
 
-Bundler.setup
 
 Bundler.require
+
+require 'active_support/all'
+
 require File.expand_path('../../lib/italian_job', __FILE__)
 
 ENV['DB'] ||= 'sqlite3'
+
+require "active_record"
 
 database_yml = File.expand_path('../database.yml', __FILE__)
 if File.exists?(database_yml)
@@ -27,3 +31,11 @@ if File.exists?(database_yml)
 else
     raise "Please create #{database_yml} first to configure your database. Take a look at: #{database_yml}.sample"
 end
+
+def clean!
+    ActiveRecord::Base.connection.tables.each do |table|
+        ActiveRecord::Base.connection.execute "DELETE FROM #{table}"
+    end
+end
+
+clean!
