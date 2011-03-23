@@ -25,7 +25,7 @@ if File.exists?(database_yml)
         ActiveRecord::Migration.verbose = false
 
         load(File.dirname(__FILE__) + '/schema.rb')
-        load(File.dirname(__FILE__) + '/user.rb')
+        load(File.dirname(__FILE__) + '/support/user.rb')
     end  
 
 else
