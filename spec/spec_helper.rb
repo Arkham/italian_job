@@ -1,41 +1,27 @@
-$LOAD_PATH << "." unless $LOAD_PATH.include?(".")
+require "italian_job"
 
-require "rubygems"
-require "bundler/setup"
+Bundler.setup
+require "rails/all"
+Bundler.require(:default)
 
+require "rspec/rails"
 
-Bundler.require
+Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
 
-require 'active_support/all'
+ActiveRecord::Base.establish_connection :adapter => "sqlite3", :database => ":memory:"
+load "schema.rb"
 
-require File.expand_path('../../lib/italian_job', __FILE__)
+#I18n.load_path << File.dirname(__FILE__) + "/support/translations.yml"
 
-ENV['DB'] ||= 'sqlite3'
+RSpec.configure do |config|
+    config.before do
+        I18n.locale = :en
 
-require "active_record"
+        ActiveRecord::Base.descendants.each do |model|
+            model.delete_all
+            Object.class_eval { remove_const model.name if const_defined?(model.name) }
+        end
 
-database_yml = File.expand_path('../database.yml', __FILE__)
-if File.exists?(database_yml)
-    active_record_configuration = YAML.load_file(database_yml)[ENV['DB']]
-
-    ActiveRecord::Base.establish_connection(active_record_configuration)
-    ActiveRecord::Base.logger = Logger.new(File.join(File.dirname(__FILE__), "debug.log"))
-
-    ActiveRecord::Base.silence do
-        ActiveRecord::Migration.verbose = false
-
-        load(File.dirname(__FILE__) + '/schema.rb')
-        load(File.dirname(__FILE__) + '/support/user.rb')
-    end  
-
-else
-    raise "Please create #{database_yml} first to configure your database. Take a look at: #{database_yml}.sample"
-end
-
-def clean!
-    ActiveRecord::Base.connection.tables.each do |table|
-        ActiveRecord::Base.connection.execute "DELETE FROM #{table}"
+        load File.dirname(__FILE__) + "/support/user.rb"
     end
 end
-
-clean!

@@ -3,6 +3,4 @@ pkg/*
 .bundle
 .yardoc
 doc
-spec/*.yml
-*.log
-*.sqlite3
+Gemfile.lock
