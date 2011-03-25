@@ -11,7 +11,7 @@ Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
 ActiveRecord::Base.establish_connection :adapter => "sqlite3", :database => ":memory:"
 load "schema.rb"
 
-#I18n.load_path << File.dirname(__FILE__) + "/support/translations.yml"
+I18n.load_path << File.dirname(__FILE__) + "/support/locale.yml"
 
 RSpec.configure do |config|
     config.before do
