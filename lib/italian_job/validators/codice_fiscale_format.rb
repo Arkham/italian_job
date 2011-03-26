@@ -11,7 +11,7 @@ module ActiveModel
                 if value != value.upcase
                 end
                 unless value.match(REGEX)
-                    bject.errors[attribute] << I18n.translate("activerecord.errors.codice_fiscale.invalid_format") 
+                    object.errors[attribute] << I18n.translate("activerecord.errors.codice_fiscale.invalid_format") 
                     return
                 end
             end
