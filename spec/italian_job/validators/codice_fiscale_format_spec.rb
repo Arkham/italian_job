@@ -6,17 +6,17 @@ describe "codice_fiscale_validator" do
         @user = User.new
     end
 
-    context "with no values" do
+    context "with no value" do
 
-        it "should be invalid" do
+        it "is invalid" do
             @user.should_not be_valid
         end
 
-        it "should have an error" do
+        it "has an error" do
             @user.should have(1).errors_on(:codice_fiscale)
         end
 
-        it "should return an empty error" do
+        it "returns an empty error" do
             @user.errors[:codice_fiscale].should == [I18n.translate("activerecord.errors.codice_fiscale.empty")]
         end
 
@@ -25,7 +25,7 @@ describe "codice_fiscale_validator" do
 
     VALID_CODES.each do |code|
         context "with the valid code #{code}" do
-            it "should have no errors" do
+            it "has no errors" do
                 @user.codice_fiscale = code
                 @user.should have(:no).errors_on(:codice_fiscale)
             end
@@ -36,12 +36,12 @@ describe "codice_fiscale_validator" do
 
         context "with the invalid code #{code}" do
 
-            it "should have an error" do
+            it "has an error" do
                 @user.codice_fiscale = code
                 @user.should have(1).error_on(:codice_fiscale)
             end
 
-            it "should return an invalid_format error" do
+            it "returns an invalid_format error" do
                 @user.codice_fiscale = code
                 @user.errors[:codice_fiscale].should == [I18n.translate("activerecord.errors.codice_fiscale.invalid_format")]
             end
