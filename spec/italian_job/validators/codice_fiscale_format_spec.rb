@@ -17,6 +17,7 @@ describe "codice_fiscale_validator" do
         end
 
         it "returns an empty error" do
+            @user.should_not be_valid
             @user.errors[:codice_fiscale].should == [I18n.translate("activerecord.errors.codice_fiscale.empty")]
         end
 
@@ -43,6 +44,7 @@ describe "codice_fiscale_validator" do
 
             it "returns an invalid_format error" do
                 @user.codice_fiscale = code
+                @user.should_not be_valid
                 @user.errors[:codice_fiscale].should == [I18n.translate("activerecord.errors.codice_fiscale.invalid_format")]
             end
 
