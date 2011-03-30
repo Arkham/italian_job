@@ -4,8 +4,12 @@ welcome.
 
 h2. Validators
 
-At this very moment there is only a validator for the italian tax code (
-codice fiscale). Please take a look to the roadmap for future developments.
+At this very moment there is only a validator for the italian tax code.
+Please take a look to the roadmap for future developments.
+
+h2. Helpers
+
+Please take a look to the roadmap for future developments.
 
 h2. Roadmap
 
