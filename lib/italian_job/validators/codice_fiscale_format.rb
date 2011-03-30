@@ -26,7 +26,7 @@ module ActiveModel
                 value[0..14].split('').each_with_index {|e,i| (i+1).odd? ? odds << e : evens << e}
                 odd = odds.inject(0) { |sum, current_char| sum + DISPARI[(current_char.ord < 65 ? current_char.to_i : ((current_char.ord - 54)-1))] }
                 even = evens.inject(0) { |sum, current_char| sum + (current_char.ord < 65 ? current_char.to_i : current_char.ord - 65) }
-                ( ((odd + even) % 26) + 65).chr == value[15]
+                ( ((odd + even) % 26) + 65).chr == value[15].chr
             end
         end
     end
