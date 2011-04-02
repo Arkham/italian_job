@@ -24,7 +24,7 @@ describe "codice_fiscale_validator" do
     end
 
 
-    VALID_CODES.each do |code|
+    VALID_CODICE_FISCALE_CODES.each do |code|
         context "with the valid code #{code}" do
             it "has no errors" do
                 @user.codice_fiscale = code
@@ -33,7 +33,7 @@ describe "codice_fiscale_validator" do
         end
     end
 
-    INVALID_CODES.each do |code|
+    INVALID_CODICE_FISCALE_CODES.each do |code|
 
         context "with the invalid code #{code}" do
 
