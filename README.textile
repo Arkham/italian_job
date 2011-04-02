@@ -4,8 +4,15 @@ welcome.
 
 h2. Validators
 
-At this very moment there is only a validator for the italian tax code.
-Please take a look to the roadmap for future developments.
+There are two validators:
+
+* codice_fiscale_format
+The Italian Tax code is called Codice Fiscale. For more information please
+take a look at "http://en.wikipedia.org/wiki/italian_fiscal_code_card":http://en.wikipedia.org/wiki/Italian_fiscal_code_card.
+
+* partita_iva_format
+The Italian VAT is called partita iva. For more information please
+take a look at "http://en.wikipedia.org/wiki/Value_added_tax_identification_number":http://en.wikipedia.org/wiki/Value_added_tax_identification_number.
 
 h2. Helpers
 
@@ -13,10 +20,11 @@ Please take a look to the roadmap for future developments.
 
 h2. Roadmap
 
-* add partita iva validator
+* write some code comments
 * add cellulare validator ( for italian mobile phones)
 * add numero_fisso validator ( for italian landline numbers)
-* add some helpers for italian regions and provinces
+* add some helpers for italian regions and provinces.
+* try to get feedback and add more stuff here
 
 h2. Copyright
 
