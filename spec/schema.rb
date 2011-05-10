@@ -5,5 +5,5 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string "codice_fiscale"
     t.string "partita_iva"
   end
-  
+
 end
