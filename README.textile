@@ -1,5 +1,4 @@
-The aim of this gem is to provide goodies for developers that are dealing with
-typical italian business problem with rails 3. Any help will be more than
+The aim of this gem is to provide goodies for developers that are dealing with typical italian business problem with rails 3. Any help will be more than
 welcome.
 
 h2. Validators
@@ -20,7 +19,7 @@ Please take a look to the roadmap for future developments.
 
 h2. Roadmap
 
-* write some code comments
+* comment code
 * add cellulare validator ( for italian mobile phones)
 * add numero_fisso validator ( for italian landline numbers)
 * add some helpers for italian regions and provinces.
