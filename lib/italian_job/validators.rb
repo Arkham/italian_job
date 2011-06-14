@@ -8,6 +8,7 @@ module ItalianJob
       DISPARI=[1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23]
 
       def validate_each(object, attribute, value)
+        return if value.blank?
         if !value.match(REGEX) || !control_code_valid?(value)
           object.errors[attribute] << I18n.translate("activerecord.errors.codice_fiscale.invalid_format")
         end
@@ -26,6 +27,7 @@ module ItalianJob
     class ItalianVatCodeValidator < ActiveModel::EachValidator
       REGEX=Regexp.compile("^[0-9]{11}$")
       def validate_each(object, attribute, value)
+        return if value.blank?
         if !value.match(REGEX) || !control_code_valid?(value)
           object.errors[attribute] << I18n.translate("activerecord.errors.partita_iva.invalid_format")
         end
