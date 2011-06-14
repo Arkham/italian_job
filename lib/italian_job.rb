@@ -1,4 +1,14 @@
-require "active_record"
 require "italian_job/validators"
-require "italian_job/validators/codice_fiscale_format"
-require "italian_job/validators/partita_iva_format"
+
+if Rails::VERSION::MAJOR >= 3
+  require "rails3/validator"
+
+  # include InstanceMethods to expose the ExistenceValidator class to ActiveModel::Validations
+  ActiveModel::Validations.__send__(:include, ItalianJob::Validators::InstanceMethods)
+
+  # extend the ClassMethods to expose the validates_presence_of method as a class level method of ActiveModel::Validations
+  ActiveModel::Validations.__send__(:extend, ItalianJob::Validators::ClassMethods)
+else
+  require "rails2/validator"
+  ActiveRecord::Base.__send__(:extend, ItalianJob::Validators)
+end
