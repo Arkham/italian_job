@@ -1,8 +1,6 @@
 require "italian_job/validators"
 
 if Rails::VERSION::MAJOR >= 3
-  require "rails3/validator"
-
   # include InstanceMethods to expose the ExistenceValidator class to ActiveModel::Validations
   ActiveModel::Validations.__send__(:include, ItalianJob::Validators::InstanceMethods)
 
